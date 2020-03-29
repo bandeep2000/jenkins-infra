@@ -1,0 +1,12 @@
+# https://medium.com/@mohan08p/install-and-configure-jenkins-on-amazon-ami-8617f0816444
+- hosts: web
+  vars:
+    http_port: 80
+  gather_facts: yes
+  become: yes
+  become_method: sudo
+  tasks:
+  - debug: 
+      msg: "hello"
+  roles:
+  - roles/jenkins

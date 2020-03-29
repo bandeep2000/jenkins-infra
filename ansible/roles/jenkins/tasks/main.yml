@@ -1,0 +1,37 @@
+- name: debug
+  debug:
+      msg: "Hello {{ http_port }}"
+
+- name: uptime
+  shell: uptime
+  register: up1
+- name: debug1
+  debug:
+     msg: "{{ up1 }}"
+- name: update the system
+  yum:
+     name: "*"
+     state: latest
+- name: install jenkins
+  yum:
+     name: java-1.7.0-openjdk
+     state: removed
+- name: install jenkins
+  yum:
+     name: java-1.8.0
+- name: Download foo.conf
+  get_url:
+     url: http://pkg.jenkins-ci.org/redhat/jenkins.repo
+     dest: /etc/yum.repos.d/jenkins.repo
+- name: installing keys
+  rpm_key:
+     state: present
+     key:  http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
+- name: Installing jenkins
+  yum:
+     name: jenkins
+     state: latest
+- name: Installing jenkins
+  service:
+     name: jenkins
+     state: started
