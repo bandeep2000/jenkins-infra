@@ -35,3 +35,6 @@
   service:
      name: jenkins
      state: started
+- name: Test using curl influx up
+  #when:    ansible_distribution == "RedHat" and ansible_distribution_major_version == "6"
+  command: curl -I http://localhost:8081

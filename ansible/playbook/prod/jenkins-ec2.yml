@@ -9,4 +9,4 @@
   - debug: 
       msg: "hello"
   roles:
-  - roles/jenkins
+  - ../../roles/jenkins
