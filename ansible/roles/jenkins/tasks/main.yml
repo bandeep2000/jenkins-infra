@@ -9,6 +9,25 @@
      dest: /usr/sbin
      remote_src: yes
 
+- name:  Install git
+  yum:
+    name: git
+    state: latest
+
+- name:  Install docker
+  yum:
+    name: docker
+    state: latest
+
+- name:  Install git
+  service:
+    name: docker
+    state: started
+
+- name:  Install ansible
+  pip:
+    name: ansible
+
 - name: debug
   debug:
       msg: "Hello {{ http_port }}"
@@ -16,6 +35,7 @@
 - name: uptime
   shell: uptime
   register: up1
+
 - name: debug1
   debug:
      msg: "{{ up1 }}"
@@ -46,6 +66,11 @@
   service:
      name: jenkins
      state: started
+
+- name: Pause few sec after jenkins
+  pause:
+     seconds: 10
+
 - name: Test using curl influx up
   #when:    ansible_distribution == "RedHat" and ansible_distribution_major_version == "6"
   command: curl -I http://localhost:8080

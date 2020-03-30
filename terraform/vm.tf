@@ -1,5 +1,5 @@
 module "webserver_cluster" {
-  source = "./modules"
+  source   = "./modules"
   key_name = "ban6"
 }
 output "public_ip" {
