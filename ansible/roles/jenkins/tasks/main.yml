@@ -1,3 +1,14 @@
+- name: wget terraform
+  get_url:
+    url: https://releases.hashicorp.com/terraform/0.12.24/terraform_0.12.24_linux_amd64.zip
+    dest: /tmp/terraform.zip
+
+- name: Extract foo.tgz into /var/lib/foo
+  unarchive:
+     src: /tmp/terraform.zip
+     dest: /usr/sbin
+     remote_src: yes
+
 - name: debug
   debug:
       msg: "Hello {{ http_port }}"
@@ -37,4 +48,5 @@
      state: started
 - name: Test using curl influx up
   #when:    ansible_distribution == "RedHat" and ansible_distribution_major_version == "6"
-  command: curl -I http://localhost:8081
+  command: curl -I http://localhost:8080
+
