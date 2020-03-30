@@ -11,6 +11,7 @@ pipeline {
             steps {
                 sh 'pwd'
                 dir('terraform') {
+                   sh 'terraform init'
                    sh 'terraform apply --auto-approve'
                    sh 'pwd'
                 }
