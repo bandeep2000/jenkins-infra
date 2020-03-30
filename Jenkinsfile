@@ -3,7 +3,7 @@ pipeline {
   stages {
     state('terraform init') {
        steps {
-        echo 'terraform init step'
+        echo 'terraform init'
       }
 
     }
